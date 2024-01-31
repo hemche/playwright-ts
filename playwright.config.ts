@@ -27,19 +27,21 @@ export default defineConfig({
     ['junit', { outputFile: './test-results/playwright-results.xml' }],
     ['line'],
     ['html', { open: 'never', outputFolder: 'html-report' }],
-    ['allure-playwright']
+    ['allure-playwright'],
+    ['github']
   ],
+
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 30000,
     navigationTimeout: 30000,
-    baseURL: 'https://the-internet.herokuapp.com/',
+    baseURL: 'https://the-internet.herokuapp.com',
     screenshot: 'only-on-failure',
     trace: 'retain-on-failure',
     ignoreHTTPSErrors: true,
     video: 'on',
-    testIdAttribute: 'id' || 'data-testid'
+    testIdAttribute: 'id'
   },
 
   /* Configure projects for major browsers */
