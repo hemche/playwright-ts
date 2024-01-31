@@ -49,11 +49,10 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         channel: 'chrome',
-        headless: false
-        // launchOptions: {
-        //   args: ["--start-maximized"],
-        //   slowMo: 1000, // Added this so that out eyes can catch automation in action. Otherwise, it's so fast.
-        // }
+        headless: process.env.CI ? true : false,
+        launchOptions: {
+          slowMo: 1000 // Added this so that out eyes can catch automation in action. Otherwise, it's so fast.
+        }
       }
     }
 
