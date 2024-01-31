@@ -1,0 +1,30 @@
+{
+  "name": "playwright-guide",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.41.1",
+    "@types/node": "^20.11.10",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "allure-commandline": "^2.26.0",
+    "allure-playwright": "^2.11.1",
+    "dotenv": "^16.3.2",
+    "eslint": "^8.56.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-playwright": "^0.22.1",
+    "husky": "^8.0.3",
+    "playwright": "^1.41.1",
+    "prettier": "^3.2.4",
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write tests **/*.ts",
+    "lint:fix": "eslint --fix --ext .ts tests",
+    "prepare": "husky install .husky",
+    "report": "npx allure generate --clean && npx allure open",
+    "test": "npx playwright test"
+  }
+}
