@@ -23,13 +23,24 @@ export default defineConfig({
     timeout: 10000
   },
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [
-    ['junit', { outputFile: './test-results/playwright-results.xml' }],
-    ['line'],
-    ['html', { open: 'never', outputFolder: 'html-report' }],
-    ['allure-playwright'],
-    ['github']
-  ],
+  ...(process.env.CI === 'true'
+    ? {
+        reporter: [
+          ['junit', { outputFile: './test-results/playwright-results.xml' }],
+          ['line'],
+          ['html', { open: 'never', outputFolder: 'html-report' }],
+          ['allure-playwright'],
+          ['github']
+        ]
+      }
+    : {
+        reporter: [
+          ['list'],
+          ['junit', { outputFile: './test-results/playwright-results.xml' }],
+          ['html', { open: 'never', outputFolder: 'html-report' }],
+          ['allure-playwright']
+        ]
+      }),
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {

@@ -26,9 +26,8 @@ test('Verify file upload', async ({ page }) => {
   const home = new HomePage(page);
   const fileupload = new FileUploadPage(page);
   await home.fileUpload.click();
-  await fileupload.chooseFile.setInputFiles(
-    './assets/images/playwright_image.svg'
-  );
+  const chooseFile = await fileupload.chooseFile;
+  await chooseFile.setInputFiles('./assets/images/playwright_image.svg');
   await fileupload.upload.click();
   await expect(fileupload.uploadedFileName).toHaveText('playwright_image.svg');
   await expect(page.getByText('File Uploaded!')).toBeVisible();
