@@ -53,7 +53,7 @@ export default defineConfig({
         channel: 'chrome',
         headless: process.env.CI ? true : false,
         launchOptions: {
-          slowMo: 1000 // Added this so that out eyes can catch automation in action. Otherwise, it's so fast.
+          slowMo: 1000 // Added this so that our eyes can catch automation in action. Otherwise, it's so fast.
         }
       }
     }

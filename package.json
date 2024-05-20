@@ -3,28 +3,33 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "type": "module",
   "devDependencies": {
-    "@playwright/test": "^1.41.1",
-    "@types/node": "^20.11.13",
-    "@typescript-eslint/eslint-plugin": "^6.20.0",
-    "@typescript-eslint/parser": "^6.20.0",
-    "allure-commandline": "^2.26.0",
-    "allure-playwright": "^2.11.1",
-    "dotenv": "^16.4.1",
-    "eslint": "^8.56.0",
+    "@eslint/js": "^9.3.0",
+    "@playwright/test": "^1.44.0",
+    "@types/node": "^20.12.12",
+    "@typescript-eslint/eslint-plugin": "^7.9.0",
+    "@typescript-eslint/parser": "^7.9.0",
+    "allure-commandline": "^2.29.0",
+    "allure-playwright": "^2.15.1",
+    "dotenv": "^16.4.5",
+    "eslint": "^9.3.0",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-playwright": "^0.22.1",
-    "husky": "^9.0.7",
-    "playwright": "^1.41.1",
-    "prettier": "^3.2.4",
-    "typescript": "^5.3.3"
+    "eslint-plugin-playwright": "^1.6.1",
+    "husky": "^9.0.11",
+    "playwright": "^1.44.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.9.0"
   },
   "scripts": {
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint .",
     "format": "prettier --write tests **/*.ts",
     "lint:fix": "eslint --fix --ext .ts tests",
     "prepare": "husky install .husky",
     "report": "npx allure generate --clean && npx allure open",
     "test": "npx playwright test"
-  }
+  },
+  "repository": "https://github.com/hemche/playwright-ts.git",
+  "author": "HemChe <hemu216@gmail.com>"
 }
