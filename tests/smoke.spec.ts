@@ -26,7 +26,6 @@ test('Verify file upload', async ({ page }) => {
   const home = new HomePage(page);
   const fileupload = new FileUploadPage(page);
   await home.fileUpload.click();
-  console.log(`${process.cwd()}`);
   await fileupload.chooseFile.setInputFiles(
     `${process.cwd()}/assets/images/playwright_image.svg`
   );
