@@ -27,7 +27,7 @@ test('Verify file upload', async ({ page }) => {
   const fileupload = new FileUploadPage(page);
   await home.fileUpload.click();
   await fileupload.chooseFile.setInputFiles(
-    `${process.cwd()}/assets/images/playwright_image.svg`
+    `${process.cwd()}/assets/playwright_image.svg`
   );
   await fileupload.upload.click();
   await expect(fileupload.uploadedFileName).toHaveText('playwright_image.svg');
