@@ -1,9 +1,9 @@
 import { expect, test } from '@playwright/test';
-import { FileUploadPage } from '../pages/FileUploadPage';
-import { HomePage } from '../pages/HomePage';
 import { BasicAuthPage } from '../pages/BasicAuthPage';
 import { DragDropPage } from '../pages/DragDropPage';
 import { DropDownPage } from '../pages/DropDownPage';
+import { FileUploadPage } from '../pages/FileUploadPage';
+import { HomePage } from '../pages/HomePage';
 import { LoginPage } from '../pages/LoginPage';
 import { NewWindowPage } from '../pages/NewWindowPage';
 
@@ -26,8 +26,9 @@ test('Verify file upload', async ({ page }) => {
   const home = new HomePage(page);
   const fileupload = new FileUploadPage(page);
   await home.fileUpload.click();
-  const chooseFile = await fileupload.chooseFile;
-  await chooseFile.setInputFiles('./assets/images/playwright_image.svg');
+  await fileupload.chooseFile.setInputFiles(
+    'assets/images/playwright_image.svg'
+  );
   await fileupload.upload.click();
   await expect(fileupload.uploadedFileName).toHaveText('playwright_image.svg');
   await expect(page.getByText('File Uploaded!')).toBeVisible();
