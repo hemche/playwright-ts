@@ -8,6 +8,7 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright:v1.48.0-noble
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -17,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Install Playwright Browsers
-        run: yarn playwright install --with-deps
+        run: yarn playwright install chromium --with-deps
       - name: Run Playwright tests
         run: yarn playwright test
       - uses: actions/upload-artifact@v3

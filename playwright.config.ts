@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig } from '@playwright/test';
 
 /**
  * Read environment variables from file.
@@ -23,24 +23,14 @@ export default defineConfig({
     timeout: 10000
   },
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  ...(process.env.CI === 'true'
-    ? {
-        reporter: [
-          ['junit', { outputFile: './test-results/playwright-results.xml' }],
-          ['line'],
-          ['html', { open: 'never', outputFolder: 'html-report' }],
-          ['allure-playwright'],
-          ['github']
-        ]
-      }
-    : {
-        reporter: [
-          ['list'],
-          ['junit', { outputFile: './test-results/playwright-results.xml' }],
-          ['html', { open: 'never', outputFolder: 'html-report' }],
-          ['allure-playwright']
-        ]
-      }),
+
+  reporter: [
+    ['junit', { outputFile: './test-results/playwright-results.xml' }],
+    ['line'],
+    ['html', { open: 'never', outputFolder: 'html-report' }],
+    ['allure-playwright'],
+    process.env.CI === 'true' ? ['github'] : ['null']
+  ],
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -60,8 +50,6 @@ export default defineConfig({
     {
       name: 'Google Chrome',
       use: {
-        ...devices['Desktop Chrome'],
-        channel: 'chrome',
         headless: process.env.CI ? true : false,
         launchOptions: {
           slowMo: 1000 // Added this so that our eyes can catch automation in action. Otherwise, it's so fast.
